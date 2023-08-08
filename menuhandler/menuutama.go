@@ -1,6 +1,8 @@
 package menuhandler
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func MenuUtama() {
 	fmt.Println("Menu Utama")
