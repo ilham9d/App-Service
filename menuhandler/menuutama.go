@@ -11,7 +11,7 @@ func MenuUtama() {
 	switch menuUtama {
 	case 1:
 		fmt.Println("lihat saldo")
-		fmt.Println("saldo:")
+		ShowSaldo()
 	case 2:
 		fmt.Println("top-Up")
 	case 3:
