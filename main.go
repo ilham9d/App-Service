@@ -40,7 +40,7 @@ func main() {
 	case 1:
 		menuhandler.Login(db)
 	case 2:
-		fmt.Println("register")
+		menuhandler.Register(db)
 	case 3:
 		fmt.Println("About")
 	}
