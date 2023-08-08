@@ -6,6 +6,7 @@ type User struct {
 	Email       string
 	PhoneNumber string
 	Password    string
+	Balance     int
 	Create_at   string
 	Update_at   string
 	Delete_at   string
