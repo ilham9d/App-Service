@@ -36,14 +36,12 @@ func main() {
 	fmt.Print("Masukkan pilihan: ")
 	fmt.Scanln(&pilihan)
 
-	for true {
-		switch pilihan {
-		case 1:
-			menuhandler.Login()
-		case 2:
-			fmt.Println("register")
-		case 3:
-			fmt.Println("About")
-		}
+	switch pilihan {
+	case 1:
+		menuhandler.Login(db)
+	case 2:
+		fmt.Println("register")
+	case 3:
+		fmt.Println("About")
 	}
 }

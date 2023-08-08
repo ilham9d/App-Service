@@ -32,4 +32,15 @@ constraint fk_account_penerima foreign key (account_id_penerima) references acco
 alter table transaction
 drop column status;
 
+alter table transaction
+add column status varchar(10) after account_id_penerima;
+
 select * from transaction;
+
+select * from accounts;
+
+insert into accounts(id, name, email, phone_number, password, balance)
+values("USR-00001", "ilham", "ilham@mail.com", "085804", "qwerty", 0);
+
+insert into accounts(id, name, email, phone_number, password, balance)
+values("USR-00002", "mawar", "mawar@mail.com", "085640", "qwerty", 0);
