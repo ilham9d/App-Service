@@ -1,10 +1,13 @@
 package menuhandler
 
 import (
+	"app-service/entities"
+	"database/sql"
 	"fmt"
 )
 
-func MenuUtama() {
+func MenuUtama(db *sql.DB, user entities.User) {
+
 	fmt.Println("Menu Utama")
 	var menuUtama int
 	fmt.Println("1. Lihat Saldo\n2. Top-up\n3. Transfer\n4. Riwayat Transaksi\n5. Lihat Profil\n6. Cari User\n7. Keluar Dari Sistem")
@@ -21,7 +24,7 @@ func MenuUtama() {
 	case 4:
 		fmt.Println("Riwayat transaksi")
 	case 5:
-		fmt.Println("Lihat Profil")
+		ReadProfile(db, user)
 	case 6:
 		fmt.Println("Cari User")
 	case 7:

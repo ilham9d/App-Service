@@ -44,3 +44,6 @@ values("USR-00001", "ilham", "ilham@mail.com", "085804", "qwerty", 0);
 
 insert into accounts(id, name, email, phone_number, password, balance)
 values("USR-00002", "mawar", "mawar@mail.com", "085640", "qwerty", 0);
+
+alter table accounts
+modify column balance int(11) not null;
