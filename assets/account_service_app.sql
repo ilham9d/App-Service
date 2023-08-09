@@ -48,4 +48,9 @@ values("USR-00002", "mawar", "mawar@mail.com", "085640", "qwerty", 0);
 alter table accounts
 modify column balance int(11) not null;
 
-delete from accounts where id = "0000";
+delete from accounts where id = "531pFnAVUUisIkODbPld";
+
+update accounts set delete_at = null where id = "USR-00003";
+
+select a.name as pengirim, a.name as penerima, status, t.balance, t.date_time_transaction from transaction as t
+inner join accounts as a on  a.id=t.account_id_penerima;
