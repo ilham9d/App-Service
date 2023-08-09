@@ -11,10 +11,12 @@ func Login(db *sql.DB) {
 	var telp, pass string
 	var create, update, delete sql.NullString
 
-	fmt.Println("Nomor Telepon")
-	fmt.Scan(&telp)
-	fmt.Println("Password")
-	fmt.Scan(&pass)
+	fmt.Print("Nomor Telepon : ")
+	fmt.Scanln(&telp)
+	fmt.Print("Password : ")
+	fmt.Scanln(&pass)
+
+	fmt.Println(telp, pass)
 
 	row := db.QueryRow("select id, name, email, phone_number, password, balance, create_at, update_at, delete_at from accounts where phone_number = ? and delete_at is null", telp)
 	if err := row.Scan(&user.Id, &user.Nama, &user.Email, &user.PhoneNumber, &user.Password, &user.Balance, &create, &update, &delete); err != nil {
