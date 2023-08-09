@@ -10,7 +10,7 @@ func MenuUtama(db *sql.DB, user entities.User) {
 
 	fmt.Println("Menu Utama")
 	var menuUtama int
-	fmt.Println("1. Lihat Saldo\n2. Top-up\n3. Transfer\n4. Riwayat Transaksi\n5. Lihat Profil\n6. Cari User\n7. Keluar Dari Sistem")
+	fmt.Println("1. Lihat Saldo\n2. Top-up\n3. Transfer\n4. Riwayat Transaksi\n5. Lihat Profil\n6. Hapus Akun\n7. Cari User\n8. Keluar Dari Sistem")
 	fmt.Println("Masukkan Pilihan")
 	fmt.Scan(&menuUtama)
 	switch menuUtama {
@@ -26,7 +26,7 @@ func MenuUtama(db *sql.DB, user entities.User) {
 	case 5:
 		ReadProfile(db, user)
 	case 6:
-		Delete()
+		Delete(db, user)
 	case 7:
 		fmt.Println("Cari User")
 	case 8:
