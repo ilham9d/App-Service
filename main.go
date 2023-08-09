@@ -34,7 +34,7 @@ func main() {
 	fmt.Println("pilih menu")
 	fmt.Print("1. Login\n2. Register\n3. About\n")
 	fmt.Print("Masukkan pilihan: ")
-	fmt.Scan(&pilihan)
+	fmt.Scanln(&pilihan)
 
 	switch pilihan {
 	case 1:
