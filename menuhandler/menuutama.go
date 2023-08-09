@@ -15,8 +15,7 @@ func MenuUtama(db *sql.DB, user entities.User) {
 	fmt.Scan(&menuUtama)
 	switch menuUtama {
 	case 1:
-		fmt.Println("lihat saldo")
-		ShowSaldo()
+		ShowSaldo(db, user)
 	case 2:
 		TopUp(db, user)
 	case 3:
@@ -26,7 +25,7 @@ func MenuUtama(db *sql.DB, user entities.User) {
 	case 5:
 		ReadProfile(db, user)
 	case 6:
-		Delete()
+		Delete(db, user)
 	case 7:
 		fmt.Println("Cari User")
 	case 8:

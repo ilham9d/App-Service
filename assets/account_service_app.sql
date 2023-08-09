@@ -47,3 +47,5 @@ values("USR-00002", "mawar", "mawar@mail.com", "085640", "qwerty", 0);
 
 alter table accounts
 modify column balance int(11) not null;
+
+delete from accounts where id = "0000";
