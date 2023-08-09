@@ -26,8 +26,10 @@ func MenuUtama(db *sql.DB, user entities.User) {
 	case 5:
 		ReadProfile(db, user)
 	case 6:
-		fmt.Println("Cari User")
+		Delete()
 	case 7:
+		fmt.Println("Cari User")
+	case 8:
 		fmt.Println("Keluar")
 	}
 }
