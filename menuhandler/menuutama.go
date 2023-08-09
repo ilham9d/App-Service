@@ -18,7 +18,7 @@ func MenuUtama(db *sql.DB, user entities.User) {
 		fmt.Println("lihat saldo")
 		ShowSaldo()
 	case 2:
-		fmt.Println("top-Up")
+		TopUp(db, user)
 	case 3:
 		fmt.Println("Transfer")
 	case 4:
