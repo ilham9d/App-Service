@@ -1,10 +1,10 @@
 package menuhandler
 
 import (
+	"app-service/entities"
 	"database/sql"
 	"fmt"
 	"log"
-	"os"
 	"time"
 )
 
@@ -18,30 +18,31 @@ func SoftDelete(db *sql.DB, id string) error {
 	return nil
 }
 
-func Delete() {
-	var db *sql.DB
-	var err error
-	var connectionString = os.Getenv("CONNECTION_DB")
+func Delete(db *sql.DB, user entities.User) { //db *sql.DB, user entities.User
 
-	db, err = sql.Open("mysql", connectionString)
-	if err != nil {
-		log.Fatal("error connection", err.Error())
-	}
+	// var db *sql.DB
+	// var err error
+	// var connectionString = os.Getenv("CONNECTION_DB")
 
-	errPing := db.Ping()
-	if errPing != nil {
-		log.Fatal("error ping db", err.Error())
-	} else {
-		fmt.Println("success ping")
-	}
+	// db, err = sql.Open("mysql", connectionString)
+	// if err != nil {
+	// 	log.Fatal("error connection", err.Error())
+	// }
 
-	defer db.Close()
+	// errPing := db.Ping()
+	// if errPing != nil {
+	// 	log.Fatal("error ping db", err.Error())
+	// } else {
+	// 	fmt.Println("success ping")
+	// }
 
-	var idToDelete string
-	fmt.Print("Insert your ID: ")
-	fmt.Scanln(&idToDelete)
+	// defer db.Close()
 
-	err = SoftDelete(db, idToDelete)
+	// var idToDelete string
+	// fmt.Print("Insert your ID: ")
+	// fmt.Scanln(&idToDelete)
+
+	err := SoftDelete(db, user.Id)
 	if err != nil {
 		log.Fatal("Failed to Delete", err.Error())
 	} else {
