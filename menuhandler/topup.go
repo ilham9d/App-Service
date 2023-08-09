@@ -14,11 +14,12 @@ func TopUp(db *sql.DB, user entities.User) {
 	var nominal int
 	var option string
 
-	var str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345678"
+	var str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 	newid, err := gonanoid.Generate(str, 20)
 	if err != nil {
 		log.Default()
 	}
+
 	fmt.Println("Masukkan Nominal Top-Up : ")
 	fmt.Print("Rp. ")
 	fmt.Scan(&nominal)
@@ -52,5 +53,4 @@ func TopUp(db *sql.DB, user entities.User) {
 	case "n", "N":
 		fmt.Println("Top-Up dibatalkan")
 	}
-
 }
