@@ -34,29 +34,35 @@ func UbahData(db *sql.DB, query string, user entities.User, before string) {
 }
 
 func UpdateAccount(db *sql.DB, user entities.User) {
-	var pilihan int
-	fmt.Println("Pilih data yang akan diubah")
-	fmt.Println("1. Nama\n2. Email\n3. Nomor Telepon\n4. Password")
-	fmt.Print("Masukkan pilihan: ")
-	fmt.Scan(&pilihan)
+	var menuupdateaccount = false
+	for menuupdateaccount == false {
+		var pilihan int
+		fmt.Println("Pilih data yang akan diubah")
+		fmt.Println("1. Nama\n2. Email\n3. Nomor Telepon\n4. Password\n5. Kembali")
+		fmt.Print("Masukkan pilihan: ")
+		fmt.Scanln(&pilihan)
 
-	switch pilihan {
-	case 1:
-		query := "Update accounts set name = ?, update_at = ? where id = ?"
-		before := user.Nama
-		UbahData(db, query, user, before)
-	case 2:
-		query := "Update accounts set email = ?, update_at = ? where id = ?"
-		before := user.Email
-		UbahData(db, query, user, before)
-	case 3:
-		query := "Update accounts set phone_number = ?, update_at = ? where id = ?"
-		before := user.PhoneNumber
-		UbahData(db, query, user, before)
-	case 4:
-		query := "Update accounts set password = ?, update_at = ? where id = ?"
-		before := user.Password
-		UbahData(db, query, user, before)
-	default:
+		switch pilihan {
+		case 1:
+			query := "Update accounts set name = ?, update_at = ? where id = ?"
+			before := user.Nama
+			UbahData(db, query, user, before)
+		case 2:
+			query := "Update accounts set email = ?, update_at = ? where id = ?"
+			before := user.Email
+			UbahData(db, query, user, before)
+		case 3:
+			query := "Update accounts set phone_number = ?, update_at = ? where id = ?"
+			before := user.PhoneNumber
+			UbahData(db, query, user, before)
+		case 4:
+			query := "Update accounts set password = ?, update_at = ? where id = ?"
+			before := user.Password
+			UbahData(db, query, user, before)
+		case 5:
+			menuupdateaccount = true
+		default:
+			fmt.Println("Pilihan tidak valid")
+		}
 	}
 }

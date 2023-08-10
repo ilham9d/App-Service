@@ -56,5 +56,4 @@ func Register(db *sql.DB) {
 	case "n", "N":
 		fmt.Println("Batal mendaftar")
 	}
-
 }

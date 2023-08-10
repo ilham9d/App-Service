@@ -29,19 +29,23 @@ func main() {
 
 	defer db.Close()
 
-	var pilihan int
-	fmt.Println("Selamat datang")
-	fmt.Println("pilih menu")
-	fmt.Print("1. Login\n2. Register\n3. About\n")
-	fmt.Print("Masukkan pilihan: ")
-	fmt.Scanln(&pilihan)
+	var main bool = false
+	for main == false {
+		var pilihan int
+		fmt.Println("Selamat datang")
+		fmt.Println("pilih menu")
+		fmt.Print("1. Login\n2. Register\n3. Keluar dari sistem\n")
+		fmt.Print("Masukkan pilihan: ")
+		fmt.Scanln(&pilihan)
 
-	switch pilihan {
-	case 1:
-		menuhandler.Login(db)
-	case 2:
-		menuhandler.Register(db)
-	case 3:
-		fmt.Println("About")
+		switch pilihan {
+		case 1:
+			menuhandler.Login(db)
+		case 2:
+			menuhandler.Register(db)
+		case 3:
+			main = true
+		}
 	}
+	fmt.Println("Terimakasih telah bertransaksi menggunakan sistem")
 }
