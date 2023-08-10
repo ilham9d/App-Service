@@ -19,7 +19,7 @@ func MenuUtama(db *sql.DB, user entities.User) {
 	case 2:
 		TopUp(db, user)
 	case 3:
-		fmt.Println("Transfer")
+		Transfer(db, user)
 	case 4:
 		History(db, user)
 	case 5:
@@ -27,7 +27,7 @@ func MenuUtama(db *sql.DB, user entities.User) {
 	case 6:
 		Delete(db, user)
 	case 7:
-		fmt.Println("Cari User")
+		CariUser(db, user)
 	case 8:
 		fmt.Println("Keluar")
 	}
