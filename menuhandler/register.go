@@ -24,10 +24,6 @@ func Register(db *sql.DB) {
 	Name, _ := reader.ReadString('\n')
 	Name = strings.TrimSpace(Name)
 
-	fmt.Print("Masukkan password anda: ")
-	Password, _ := reader.ReadString('\n')
-	Password = strings.TrimSpace(Password)
-
 	fmt.Print("Masukkan email anda: ")
 	Email, _ := reader.ReadString('\n')
 	Email = strings.TrimSpace(Email)
@@ -35,6 +31,10 @@ func Register(db *sql.DB) {
 	fmt.Print("Masukkan nomor telpon anda :")
 	Phone_Number, _ := reader.ReadString('\n')
 	Phone_Number = strings.TrimSpace(Phone_Number)
+
+	fmt.Print("Masukkan password anda: ")
+	Password, _ := reader.ReadString('\n')
+	Password = strings.TrimSpace(Password)
 
 	var option string
 	fmt.Println("Apakah data anda sudah benar?(y/n)")

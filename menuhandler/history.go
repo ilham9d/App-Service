@@ -16,7 +16,7 @@ func History(db *sql.DB, user entities.User) {
 	case 1:
 		HistoryTopUp(db, user)
 	case 2:
-		fmt.Println("Transfer")
+		HistoryTransfer(db, user)
 	case 3:
 		fmt.Println("Kembali")
 	}

@@ -8,3 +8,12 @@ type Transaction struct {
 	Balance    int
 	Time       string
 }
+
+type Transfer struct {
+	Pengirim      string
+	Penerima      string
+	PhonePengirim string
+	PhonePenerima string
+	Balance       int
+	Time          string
+}
