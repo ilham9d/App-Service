@@ -26,3 +26,5 @@ values("transfer-00001", "6vcpf1M9nEUMevkDh8PH", "USR-00002", "Transfer", 10000)
 
 insert into transaction(id, account_id_pengirim,account_id_penerima, status, balance)
 values("transfer-00003", "USR-00003", "USR-00002", "Transfer", 30000);
+
+update accounts set delete_at = null where id ="USR-00001";
