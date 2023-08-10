@@ -41,11 +41,19 @@ func Delete(db *sql.DB, user entities.User) { //db *sql.DB, user entities.User
 	// var idToDelete string
 	// fmt.Print("Insert your ID: ")
 	// fmt.Scanln(&idToDelete)
-
-	err := SoftDelete(db, user.Id)
-	if err != nil {
-		log.Fatal("Failed to Delete", err.Error())
-	} else {
-		fmt.Println("Delete Successfully!")
+	var pilihan string
+	fmt.Println("Apakah anda yakin ingin menghapus akun anda?(y/n)")
+	fmt.Print("Masukkan pilihan : ")
+	fmt.Scanln(&pilihan)
+	switch pilihan {
+	case "y", "Y":
+		err := SoftDelete(db, user.Id)
+		if err != nil {
+			log.Fatal("Failed to Delete", err.Error())
+		} else {
+			fmt.Println("Delete Successfully!")
+		}
+	case "n", "N":
+		fmt.Println("Batal menghapus akun")
 	}
 }

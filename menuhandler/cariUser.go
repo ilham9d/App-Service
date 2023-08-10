@@ -11,7 +11,7 @@ import (
 
 func CariUser(db *sql.DB, user entities.User) {
 	var phoneNumberToView string
-	fmt.Println("Insert Phone_Number: ")
+	fmt.Print("Insert Phone_Number: ")
 	fmt.Scanln(&phoneNumberToView)
 	query := "SELECT name, email, phone_number FROM accounts WHERE phone_number = ?"
 	row := db.QueryRow(query, phoneNumberToView)

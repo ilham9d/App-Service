@@ -22,9 +22,9 @@ func TopUp(db *sql.DB, user entities.User) {
 
 	fmt.Println("Masukkan Nominal Top-Up : ")
 	fmt.Print("Rp. ")
-	fmt.Scan(&nominal)
+	fmt.Scanln(&nominal)
 	fmt.Print("Apakah anda ingin melakukan Top-Up sebesar ", nominal, "?(y/n)")
-	fmt.Scan(&option)
+	fmt.Scanln(&option)
 
 	switch option {
 	case "y", "Y":
