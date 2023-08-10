@@ -44,7 +44,7 @@ func MenuUtama(db *sql.DB, id string) {
 		case 2:
 			TopUp(db, user)
 		case 3:
-			fmt.Println("Transfer")
+			Transfer(db, user)
 		case 4:
 			History(db, user)
 		case 5:
