@@ -25,29 +25,45 @@ func Transfer(db *sql.DB, user entities.User) {
 	fmt.Println("1. Pilih nomor tujuan yang pernah digunakan")
 	fmt.Println("2. Masukkan Nomor Penerima baru")
 	fmt.Print("Pilihan Anda: ")
-	fmt.Scan(&option)
+	fmt.Scanln(&option)
 
 	switch option {
 	case "1":
 		fmt.Println("Nomor tujuan yang pernah digunakan:")
 
 		fmt.Print("Pilih nomor tujuan: ")
-		fmt.Scan(&inputPhoneNumber)
+		fmt.Scanln(&inputPhoneNumber)
 
 	case "2":
 		fmt.Print("Masukkan Nomor Penerima baru: ")
-		fmt.Scan(&inputPhoneNumber)
+		fmt.Scanln(&inputPhoneNumber)
 	default:
 		fmt.Println("Opsi tidak valid")
 		return
 	}
 
+	var recipientId string
+	var recipientName string
+	var recipientEmail string
+	var recipientPhoneNumber string
+	var recipientBalance int
+
+	rowrecipient := db.QueryRow("SELECT id, balance, name, phone_number, email FROM accounts WHERE phone_number = ? AND delete_at IS null", inputPhoneNumber)
+	if errScanRec := rowrecipient.Scan(&recipientId, &recipientBalance, &recipientName, &recipientPhoneNumber, &recipientEmail); err != nil {
+		log.Fatal("error scanning recipient's balance: ", errScanRec.Error())
+	}
+
+	fmt.Println("Tujuan anda")
+	fmt.Print("Nama : ", recipientName, "\n")
+	fmt.Print("Email : ", recipientEmail, "\n")
+	fmt.Print("No. Telpon : ", recipientPhoneNumber, "\n")
+
 	fmt.Print("Masukkan Nominal Transfer : ")
 	fmt.Print("Rp. ")
-	fmt.Scan(&amount)
+	fmt.Scanln(&amount)
 
 	fmt.Print("Apakah anda ingin melakukan transfer? (y/n)")
-	fmt.Scan(&option)
+	fmt.Scanln(&option)
 
 	switch option {
 	case "y", "Y":
@@ -60,15 +76,7 @@ func Transfer(db *sql.DB, user entities.User) {
 			fmt.Println("Saldo tidak mencukupi untuk melakukan transfer sebesar Rp.", amount)
 			return
 		}
-		var recipientBalance int
-		var recipientName string
-		var recipientEmail string
-		var recipientId string
-		var recipientPhoneNumber string
-		row = db.QueryRow("SELECT id, balance, name, phone_number, email FROM accounts WHERE phone_number = ? AND delete_at IS null", inputPhoneNumber)
-		if err := row.Scan(&recipientId, &recipientBalance, &recipientName, &recipientPhoneNumber, &recipientEmail); err != nil {
-			log.Fatal("error scanning recipient's balance: ", err.Error())
-		}
+
 		// Update sender's balance
 		newSenderBalance := senderBalance - amount
 		_, err := db.Exec("UPDATE accounts SET balance = ? WHERE id = ?", newSenderBalance, user.Id)
@@ -91,7 +99,12 @@ func Transfer(db *sql.DB, user entities.User) {
 			return
 		}
 		fmt.Println("Transfer berhasil")
+		fmt.Println("==================================")
 	case "n", "N":
 		fmt.Println("Transfer dibatalkan")
+		fmt.Println("==================================")
+	default:
+		fmt.Println("Pilihat tidak valid, Transfer dibatalkan")
+		fmt.Println("==================================")
 	}
 }

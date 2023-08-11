@@ -10,7 +10,7 @@ import (
 func ShowSaldo(db *sql.DB, user entities.User) {
 	var menusaldo = false
 
-	for menusaldo == false {
+	for !menusaldo {
 		var pilihan int
 		var saldo int
 		row := db.QueryRow("select balance from accounts where id = ? and delete_at is null", user.Id)
@@ -25,9 +25,11 @@ func ShowSaldo(db *sql.DB, user entities.User) {
 		fmt.Scanln(&pilihan)
 		switch pilihan {
 		case 1:
+			fmt.Println("==================================")
 			menusaldo = true
 		default:
 			fmt.Println("Pilihan tidak valid")
+			fmt.Println("==================================")
 		}
 	}
 }

@@ -55,5 +55,7 @@ func Delete(db *sql.DB, user entities.User) { //db *sql.DB, user entities.User
 		}
 	case "n", "N":
 		fmt.Println("Batal menghapus akun")
+	default:
+		fmt.Println("Pilihan tidak valid")
 	}
 }

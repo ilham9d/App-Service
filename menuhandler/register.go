@@ -49,11 +49,18 @@ func Register(db *sql.DB) {
 			row, _ := result.RowsAffected()
 			if row > 0 {
 				fmt.Println("Berhasil mendaftar")
+				fmt.Println("==================================")
 			} else {
 				fmt.Println("Gagal mendaftar")
+				fmt.Println("==================================")
+
 			}
 		}
 	case "n", "N":
 		fmt.Println("Batal mendaftar")
+		fmt.Println("==================================")
+	default:
+		fmt.Println("Pilihan tidak valid")
+		fmt.Println("==================================")
 	}
 }

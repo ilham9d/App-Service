@@ -10,7 +10,7 @@ func History(db *sql.DB, user entities.User) {
 
 	var menuhistory = false
 
-	for menuhistory == false {
+	for !menuhistory {
 		var pilihan int
 		fmt.Println("1. Riwayat Top-Up")
 		fmt.Println("2. Riwayat Transfer")
@@ -23,7 +23,11 @@ func History(db *sql.DB, user entities.User) {
 		case 2:
 			HistoryTransfer(db, user)
 		case 3:
+			fmt.Println("==================================")
 			menuhistory = true
+		default:
+			fmt.Println("Pilihan tidak valid")
+			fmt.Println("==================================")
 		}
 	}
 }
