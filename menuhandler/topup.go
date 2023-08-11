@@ -49,8 +49,13 @@ func TopUp(db *sql.DB, user entities.User) {
 				log.Fatal("error insert data transaction ", err2.Error())
 			}
 			fmt.Println("Top-Up berhasil")
+			fmt.Println("==================================")
 		}
 	case "n", "N":
 		fmt.Println("Top-Up dibatalkan")
+		fmt.Println("==================================")
+	default:
+		fmt.Println("Pilihan tidak valid, Top-Up dibatalkan")
+		fmt.Println("==================================")
 	}
 }

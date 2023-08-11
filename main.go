@@ -30,7 +30,7 @@ func main() {
 	defer db.Close()
 
 	var main bool = false
-	for main == false {
+	for !main {
 		var pilihan int
 		fmt.Println("Selamat datang")
 		fmt.Println("pilih menu")
@@ -45,6 +45,8 @@ func main() {
 			menuhandler.Register(db)
 		case 3:
 			main = true
+		default:
+			fmt.Println("Pilihan tidak valid")
 		}
 	}
 	fmt.Println("Terimakasih telah bertransaksi menggunakan sistem")

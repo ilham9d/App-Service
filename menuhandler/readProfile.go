@@ -9,7 +9,7 @@ import (
 
 func ReadProfile(db *sql.DB, user entities.User) {
 	var menureadprofile = false
-	for menureadprofile == false {
+	for !menureadprofile {
 		var create, update sql.NullString
 
 		row := db.QueryRow("select id, name, email, phone_number, password, balance, create_at, update_at from accounts where id = ? and delete_at is null", user.Id)
@@ -38,7 +38,11 @@ func ReadProfile(db *sql.DB, user entities.User) {
 		case 1:
 			UpdateAccount(db, user)
 		case 2:
+			fmt.Println("==================================")
 			menureadprofile = true
+		default:
+			fmt.Println("Pilihan tidak valid")
+			fmt.Println("==================================")
 		}
 	}
 }

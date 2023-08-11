@@ -27,7 +27,7 @@ func getLoginData(db *sql.DB, id string) entities.User {
 func MenuUtama(db *sql.DB, id string) {
 
 	var utama = false
-	for utama == false {
+	for !utama {
 		var user = getLoginData(db, id)
 		fmt.Println("Menu Utama")
 		var menuUtama int
@@ -36,22 +36,34 @@ func MenuUtama(db *sql.DB, id string) {
 		fmt.Scanln(&menuUtama)
 		switch menuUtama {
 		case 1:
+			fmt.Println("==================================")
 			ShowSaldo(db, user)
 		case 2:
+			fmt.Println("==================================")
 			TopUp(db, user)
 		case 3:
+			fmt.Println("==================================")
 			Transfer(db, user)
 		case 4:
+			fmt.Println("==================================")
 			History(db, user)
 		case 5:
+			fmt.Println("==================================")
 			ReadProfile(db, user)
 		case 6:
+			fmt.Println("==================================")
 			Delete(db, user)
 		case 7:
+			fmt.Println("==================================")
 			CariUser(db, user)
 		case 8:
+			fmt.Println("==================================")
+			fmt.Println("Anda keluar dari akun anda")
+			fmt.Println("==================================")
 			utama = true
+		default:
+			fmt.Println("Pilihan tidak valid")
+			fmt.Println("==================================")
 		}
 	}
-	fmt.Println("Anda keluar dari akun anda")
 }

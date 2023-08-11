@@ -8,8 +8,8 @@ import (
 
 func HistoryTransfer(db *sql.DB, user entities.User) {
 	var menuhistorytransfer = false
-	for menuhistorytransfer == false {
-		rows, err := db.Query("select pengirim.name as nama_pengirim, penerima.name as nama_penerima, pengirim.phone_number, penerima.phone_number, t.balance, t.date_time_transaction from transaction as t inner join accounts as pengirim on t.account_id_pengirim = pengirim.id inner join accounts as penerima on t.account_id_penerima = penerima.id where (pengirim.id = ? or penerima.id=?) and status = ?;", user.Id, user.Id, "Transfer")
+	for !menuhistorytransfer {
+		rows, err := db.Query("select pengirim.name as nama_pengirim, penerima.name as nama_penerima, pengirim.phone_number, penerima.phone_number, t.balance, t.date_time_transaction from transaction as t inner join accounts as pengirim on t.account_id_pengirim = pengirim.id inner join accounts as penerima on t.account_id_penerima = penerima.id where (pengirim.id = ? or penerima.id=?) and status = ? order by t.date_time_transaction desc;", user.Id, user.Id, "Transfer")
 		if err != nil {
 			fmt.Println("query error ", err.Error())
 		}
@@ -42,7 +42,11 @@ func HistoryTransfer(db *sql.DB, user entities.User) {
 		fmt.Scanln(&pilihan)
 		switch pilihan {
 		case 1:
+			fmt.Println("==================================")
 			menuhistorytransfer = true
+		default:
+			fmt.Println("Pilihan tidak valid")
+			fmt.Println("==================================")
 		}
 	}
 }

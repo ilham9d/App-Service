@@ -28,3 +28,7 @@ insert into transaction(id, account_id_pengirim,account_id_penerima, status, bal
 values("transfer-00003", "USR-00003", "USR-00002", "Transfer", 30000);
 
 update accounts set delete_at = null where id ="USR-00001";
+
+select a.name, a.phone_number from transaction as t
+inner join accounts as a on t.account_id_pengirim = a.id
+where account_id_pengirim = "USR-00003" and status ="Transfer" order by date_time_transaction desc;
